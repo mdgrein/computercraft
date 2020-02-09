@@ -79,6 +79,26 @@ fuction handleInventory()
 end
 
 
+function handleFuel()
+    if not turtleNeedFuel then
+        print('Fuel level:' .. turtle.getFuelLevel())
+        if turtle.getFuelLevel() < turtle.getFuelLimit() / 3 then
+						for slot=1,15,1 do
+						    turtle.select(slot)
+								while turtle.refuel(0) and turtle.getFuelLevel() < turtle.getFuelLimit() do
+										if not (slot == 15 and turtle.getItemCount() == 1) then
+												turtle.refuel(1)
+										else
+												break
+										end
+								end
+						end
+        end
+        print('Fuel level:' .. turtle.getFuelLevel())
+    end
+end
+
+
 --[[
 #################       Actual quarry code
 --]]
