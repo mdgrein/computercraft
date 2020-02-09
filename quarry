@@ -1,0 +1,51 @@
+maxHeight=32
+maxWidth=32
+chestSlot=16
+slotCobble=1
+
+
+turtle.dig()
+turtle.forward()
+turtle.turnRight()
+
+while true do
+  for currHeightPos=1,maxHeight,1 do
+    for currWidthPos=1,maxWidth,1 do
+      if currHeightPos == 1 then
+        if not turtle.detectUp() then
+          previousSlot = turtle.getSelectedSlot()
+          turtle.select(slotCobble)
+          turtle.placeUp()
+          turtle.select(previousSlot)
+        end
+      else
+        turtle.digUp()
+      end
+      handleInventory()
+      turtle.dig()
+      turtle.digDown()
+      turtle.forward()
+    end
+    turtle.down()
+    currHeightPos++
+    turtle.digDown()
+    turtle.down()
+    currHeightPos++
+    turtle.digDown()
+    turtle.down()
+    currHeightPos++
+    turtle.dignDown()
+    turtle.turnLeft()
+    turtle.turnLeft()
+  end
+  #return to top
+end
+
+fuction handleInventory()
+  #Check space
+  #if cobble>60
+    #drop cobble-1
+  #if full
+    #place chest, move stuff
+  #Pick up chest
+end
